@@ -1,0 +1,28 @@
+public class orgObj()
+ @!this is the superclass of all objects
+end class
+
+null=orgObj.new
+
+public class Object(orgObj)
+ #this is usual used superclass
+ public sub &value
+  @!value func
+  return self
+ end sub
+ private sub &build
+  @!build func
+ end sub
+end class
+
+class var(Object)
+ @! value define
+ private sub &build arg:1
+  public value arg:1.new
+ end sub
+ @! value get define
+ public sub &value
+  return self.value
+ end sub
+end class
+
