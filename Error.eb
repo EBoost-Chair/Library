@@ -1,0 +1,15 @@
+@!Define Error infomations
+const $OEG=false.new
+const $LastError=nil.new
+const $Warinings=arrray.new
+@!Define Error Class
+public class Error(Object)
+ private sub &build
+  super
+  if ARGU[0].classof==String
+   %Error=ARGU[0]
+  else
+   %Error="Unknown Error"
+  end if
+ end sub
+end class
