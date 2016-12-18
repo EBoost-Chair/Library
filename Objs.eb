@@ -2,23 +2,22 @@ public class orgObj()
  @!this is the superclass of all objects
 end class
 
-null=orgObj.new
-
 public class Object(orgObj)
  #this is usual used superclass
- public sub &value
+ public sub &value 
   @!value func
   return self
  end sub
- private sub &build
+ private sub &build 
   @!build func
  end sub
+ public sub new alias &bulid  
 end class
 
 class var(Object)
  @! value define
  private sub &build arg:1
-  public value arg:1.new
+  public value 
  end sub
  @! value get define
  public sub &value
@@ -26,3 +25,14 @@ class var(Object)
  end sub
 end class
 
+class true(Object)
+end class
+
+class false(Object)
+end class
+
+class nil(Object)
+end class
+
+class null(Object)
+end class

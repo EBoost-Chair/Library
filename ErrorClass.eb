@@ -1,0 +1,27 @@
+#START#
+ErrorClass.eb
+Errors And Warnings Class
+email:2754887003@qq.com
+#END#
+@!Define Error Class
+public class Error(Object)
+ private sub &build
+  super
+  if ARGU[0].classof==String
+   public Msg=ARGU[0]
+  else
+   public Msg="Unknown Error"
+  end if
+ end sub
+end class
+
+public class Warning(Object)
+ private sub &build
+  super
+  if ARGU[0].classof==String
+   public Msg=ARGU[0]
+  else
+   Msg="Unknown Warning"
+  end if
+ end sub
+end class

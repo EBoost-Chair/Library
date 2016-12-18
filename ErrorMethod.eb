@@ -1,0 +1,28 @@
+#START#
+Error.eb
+Error's Method
+email:2754887003@qq.com
+#END#
+
+require "#{LoadDir}/io/" as IO
+
+IObj=IO.std.out.StdOclass.new
+
+IObj.org="#{InstallDir}/Warns.ini"
+
+@!Define Error infomations
+const $OEG=false.new
+const $LastError=nil.new
+const $Warnings=arrray.new
+
+@! Error Method
+sub raiseError 
+ a=ARGV[0].Msg
+ IO.std.err a
+end sub
+
+@! Warning Method
+sub raiseWarning 
+ a=ARGV[0].Msg
+ IObj.puts a
+end sub
