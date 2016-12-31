@@ -1,34 +1,27 @@
-class EBONPath
- sub &build
-  %tken=[]
-  ARGV[0].each |a|
-   %tken.add a
-  end
- end sub
-end class
-
-class EBONObj
- sub &build
-  %Body=ARGU[0]
-  %PathBody=[]
-  list=Body.spilt(";")
-  %Body.eachChar |char,idx|
-   if char=="{"
-    %Body.upIdx idx |char,upto|
-     if char.notSpace?
-      if char=="}"
-       public name = %Body[idx-upto+1:idx]
-      end if
-     else
-      public name = %Body[0:idx]
-     end if
- end sub
-end class
- sub FindByPath
-  List=ARGU[0].spilt(".")
-  
- end sub
-end class
+import fs,kernel.var
 sub lex 
- ebonTxt=fs.text.read ARGU[0]
+ org=fs.read(ARGV[0])
+ org.scan_by_regexp(/[(.)]/) |name| 
+  public list=[]
+  public list_h=[]
+  name.delete!("[")
+  name.delete!("]")
+  name.add(list)
+  list_h.add(kernel.create_var(Hash,name,"pub"))
+ end block
+ list.each |idx,ele|
+  public org.regexp_result(/[#{ele}]/) |res|
+   a=public org[res.tail_idx(0)+1:res.head_idx(1)-1]
+   a.split!(";")
+   a.each |idxx,elex|
+    elex.split!(":")
+    Mirror.id=kernel.var.find_var_by_name(public ele).id
+    elex.each |idxxx,elexx|
+     Mirror.add(elexx[0],elexx[1])
+    end block
+   end block
+  end block
+ end block
+ kernel.var.give_to_public(list_h)
 end sub
+    
